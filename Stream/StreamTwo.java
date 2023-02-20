@@ -11,7 +11,7 @@ class Product{
         this.price=c;
     }
 }
-public class StreamConv {
+public class StreamTwo {
     public static void main(String[] args){
         List<Product> lp=new ArrayList<Product>();
         lp.add(new Product(101,"Bat",500.0));
@@ -20,17 +20,9 @@ public class StreamConv {
         lp.add(new Product(104,"Gloves",300));
         lp.add(new Product(105,"Helmet",400));
 
-        //converting list to set
-       /*  Set<Double> prlst = lp.stream()
-        .filter(p->p.price >200)
-        .map(p->p.price)
-        .collect(Collectors.toSet());
-        System.out.println(prlst); */
-
-
-        //converting the list to Map
-        Map<Integer,String> ppl=lp.stream()
-        .collect(Collectors.toMap(p->p.id,p->p.name));
-        System.out.println(ppl);
+        //for filtering and iterating the collection
+        lp.stream() //iterating over every object of the Product
+        .filter(p -> p.price == 600 || p.price==500) //filtering the product having price 600 or 500
+        .forEach(p ->System.out.println(p.name)); //using for each loop in product iterating over every object that comes after filter and printing their names
     }
 }

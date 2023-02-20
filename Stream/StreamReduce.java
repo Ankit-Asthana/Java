@@ -11,7 +11,7 @@ class Product{
         this.price=c;
     }
 }
-public class StreamConv {
+public class StreamReduce {
     public static void main(String[] args){
         List<Product> lp=new ArrayList<Product>();
         lp.add(new Product(101,"Bat",500.0));
@@ -20,17 +20,10 @@ public class StreamConv {
         lp.add(new Product(104,"Gloves",300));
         lp.add(new Product(105,"Helmet",400));
 
-        //converting list to set
-       /*  Set<Double> prlst = lp.stream()
-        .filter(p->p.price >200)
+        //sum of the price
+        double summ=lp.stream()
         .map(p->p.price)
-        .collect(Collectors.toSet());
-        System.out.println(prlst); */
-
-
-        //converting the list to Map
-        Map<Integer,String> ppl=lp.stream()
-        .collect(Collectors.toMap(p->p.id,p->p.name));
-        System.out.println(ppl);
+        .reduce((sum,price)->sum+price);
+        System.out.println("Sum of all the prices of the things is "+summ);
     }
 }

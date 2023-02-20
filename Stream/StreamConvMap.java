@@ -11,7 +11,7 @@ class Product{
         this.price=c;
     }
 }
-public class StreamConv {
+public class StreamConvMap {
     public static void main(String[] args){
         List<Product> lp=new ArrayList<Product>();
         lp.add(new Product(101,"Bat",500.0));
